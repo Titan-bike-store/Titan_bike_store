@@ -10,6 +10,7 @@ from .association_tables import category_product
 class Category(BaseModel):
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     slug: Mapped[str] = mapped_column(nullable=True)
+    icon: Mapped[str] = mapped_column(nullable=True, default='')
     products: Mapped[List['Product']] = relationship(
         secondary=category_product,
         back_populates="categories"

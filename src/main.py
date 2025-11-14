@@ -2,6 +2,7 @@ import uvicorn
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 # from sqladmin import Admin
 
 from starlette.middleware.cors import CORSMiddleware
@@ -37,11 +38,16 @@ if settings.CORS_ORIGINS:
         allow_headers=["*"],
     )
 
+app.mount("/media", StaticFiles(directory=settings.media_path), name="media")
+app.mount("/static", StaticFiles(directory=settings.static_path), name="static")
+app.mount("/vendor", StaticFiles(directory=settings.static_vendor_path), name="vendor")
+app.mount("/js",     StaticFiles(directory=settings.static_js_path),     name="js")
+app.mount("/images", StaticFiles(directory=settings.static_images_path), name="images")
+templates = Jinja2Templates(directory="templates")
+
 app.add_middleware(AuthMiddleware)
 app.add_middleware(DBSessionMiddleware, session_factory=db_instance._async_session_maker)
-
 app.include_router(api_router)
-app.mount("/media", StaticFiles(directory=settings.media_path), name="media")
 
 # admin.add_view(UserAdmin)
 # admin.add_view(CategoryAdmin)
@@ -49,11 +55,6 @@ app.mount("/media", StaticFiles(directory=settings.media_path), name="media")
 # admin.add_view(ProductAdmin)
 # admin.add_view(ProductGalleryAdmin)
 # admin.add_view(CharacteristicsAdmin)
-
-
-@app.get("/")
-async def root():
-    return {"message": "Hello worlds!"}
 
 
 if __name__ == '__main__':

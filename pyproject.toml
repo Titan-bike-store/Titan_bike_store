@@ -1,27 +1,19 @@
 [project]
-name = "cargo-caravan-777"
+name = "titan-bike-store"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "aiogram>=3.22.0",
     "alembic>=1.17.1",
     "asyncpg>=0.30.0",
-    "fastapi>=0.119.0",
-    "fastapi-amis-admin[cli]>=0.7.3",
-    "fastapi-mail>=1.5.0",
-    "fastapi-scheduler>=0.0.15",
-    "fastapi-user-auth>=0.7.3",
-    "google-auth>=2.41.1",
-    "google-genai>=1.45.0",
+    "fastapi>=0.121.1",
     "greenlet>=3.2.4",
     "jinja2>=3.1.6",
     "psycopg2>=2.9.11",
-    "pydantic>=2.11.9",
-    "pydantic-settings>=2.11.0",
+    "pydantic-settings>=2.12.0",
     "python-jose>=3.5.0",
     "python-slugify>=8.0.4",
-    "sqlalchemy>=2.0.43",
-    "uvicorn>=0.37.0",
+    "sqlalchemy>=2.0.44",
+    "uvicorn>=0.38.0",
 ]

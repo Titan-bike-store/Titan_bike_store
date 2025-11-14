@@ -10,6 +10,11 @@ class Setting(BaseSettings):
 
     BASE_DIR: ClassVar[Path] = Path(__file__).resolve().parent.parent
     MEDIA_DIR: ClassVar[Path] = BASE_DIR / "media"
+    STATIC_DIR: ClassVar[Path] = BASE_DIR / "static"
+    STATIC_JS_DIR: ClassVar[Path] = BASE_DIR / "static/js"
+    STATIC_VENDOR_DIR: ClassVar[Path] = BASE_DIR / "static/vendor"
+    STATIC_IMAGES_DIR: ClassVar[Path] = BASE_DIR / "static/images"
+    TEMPLATE_DIR: ClassVar[Path] = BASE_DIR / "templates"
 
     CORS_ORIGINS: List[str] = ["*"]
 
@@ -40,6 +45,26 @@ class Setting(BaseSettings):
     @property
     def media_path(self) -> Path:
         return self.MEDIA_DIR
+
+    @property
+    def static_path(self) -> Path:
+        return self.STATIC_DIR
+
+    @property
+    def static_js_path(self) -> Path:
+        return self.STATIC_JS_DIR
+
+    @property
+    def static_vendor_path(self) -> Path:
+        return self.STATIC_VENDOR_DIR
+
+    @property
+    def static_images_path(self) -> Path:
+        return self.STATIC_IMAGES_DIR
+
+    @property
+    def templates_path(self) -> Path:
+        return self.TEMPLATE_DIR
 
     model_config = SettingsConfigDict(env_file=".env")
 
