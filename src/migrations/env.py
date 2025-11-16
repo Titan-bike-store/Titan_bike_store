@@ -11,6 +11,7 @@ from models.base_models import BaseModel
 from models.users import User
 from models.categories import Category
 from models.products import Brand, Product, ProductGallery, Characteristics
+from models.news import News, NewsComment
 
 config = context.config
 

@@ -1,4 +1,4 @@
-from sqlalchemy.orm import mapped_column, Mapped
+from sqlalchemy.orm import mapped_column, Mapped, relationship
 
 from .base_models import BaseModel
 
@@ -9,6 +9,11 @@ class User(BaseModel):
     first_name: Mapped[str] = mapped_column(nullable=True, default='')
     last_name: Mapped[str] = mapped_column(nullable=True, default='')
     password: Mapped[str] = mapped_column(nullable=True, default='')
+
+    comments: Mapped["NewsComment"] = relationship(
+        back_populates="author",
+        cascade="all, delete-orphan"
+    )
 
     def full_name(self) -> str:
         return f'{self.first_name} {self.last_name}'

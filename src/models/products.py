@@ -5,6 +5,7 @@ from slugify import slugify
 
 from .base_models import BaseModel
 from .association_tables import category_product
+from .categories import Category
 
 
 class Brand(BaseModel):
