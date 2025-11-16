@@ -12,6 +12,9 @@ from models.users import User
 from models.categories import Category
 from models.products import Brand, Product, ProductGallery, Characteristics
 from models.news import News, NewsComment
+from models.about_us import OurMission
+from models.social_networks import SocialNetwork
+from models.contacts import Contact
 
 config = context.config
 
