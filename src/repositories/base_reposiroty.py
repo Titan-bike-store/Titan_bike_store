@@ -14,14 +14,14 @@ class BaseRepository:
     async def get_all(self, *options):
         stmt = select(self.model)
         if options:
-            stmt.options(*options)
+            stmt = stmt.options(*options)
         result = await self.db.execute(stmt)
         return result.unique().scalars().all()
 
     async def get_data_by_id(self, id: int, *options):
         stmt = select(self.model).where(self.model.id == id)
         if options:
-            stmt.options(*options)
+            stmt = stmt.options(*options)
         result = await self.db.execute(stmt)
         return result.scalar_one_or_none()
 
