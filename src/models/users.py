@@ -1,6 +1,7 @@
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 
 from .base_models import BaseModel
+from .news import NewsComment
 
 
 class User(BaseModel):

@@ -2,7 +2,7 @@ import logging
 from typing import List
 
 from fastapi import APIRouter, Request
-from schemas.categories import CategoryCreateSchema, CategoryResponse
+from schemas.categories import CategorySchema, CategoryResponse
 from repositories.categories import CategoryRepository
 from services.base_service import BaseService
 
@@ -28,7 +28,7 @@ async def get_categories(request: Request):
 
 
 @router.post("/", response_model=CategoryResponse)
-async def create_category(category_data: CategoryCreateSchema, request: Request):
+async def create_category(category_data: CategorySchema, request: Request):
     db = request.state.db
 
     update_data = category_data.dict(exclude_unset=True)

@@ -1,13 +1,13 @@
 from pydantic import BaseModel
+from .base_response import BaseResponse
 
 
-class CategoryResponse(BaseModel):
-    id: int
+class CategoryResponse(BaseResponse):
     title: str
     slug: str = None
     icon: str = None
 
 
-class CategoryCreateSchema(BaseModel):
+class CategorySchema(BaseModel):
     title: str
     icon: str = None

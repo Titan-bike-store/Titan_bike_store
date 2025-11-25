@@ -29,13 +29,11 @@ class NewsComment(BaseModel):
     comment: Mapped[str] = mapped_column(nullable=False)
     news_id: Mapped[int] = mapped_column(ForeignKey("newses.id"))
     news: Mapped["News"] = relationship(
-        back_populates="comments",
-        cascade="all, delete-orphan"
+        back_populates="comments"
     )
     author_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
     author: Mapped["User"] = relationship(
-        back_populates="comments",
-        cascade="all, delete-orphan"
+        back_populates="comments"
     )
 
     def __repr__(self):
